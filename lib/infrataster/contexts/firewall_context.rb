@@ -61,6 +61,11 @@ module Infrataster
           @options.merge!(ack: mode)
         end
 
+        chain :interface do |interface|
+          @options ||={}
+          @options.merge!(interface: interface)
+        end
+
         failure_message do
           s = "expected to reach to #{resource.dest_node}"
           s + "#{@chain_string}, but did not."
